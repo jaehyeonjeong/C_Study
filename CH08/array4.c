@@ -12,7 +12,7 @@ int main()
 
 	//s2 = s1;잘못됨
 	
-	strcpy(s2, s1);//문자열 처리 함수
+	strcpy(s2, s1);//문자열 처리 함수, 실인수
 	printf("s1: %s, s2 : %s \n", s1, s2);
 
 	printf("input s1 ? "); //dom
