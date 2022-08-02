@@ -19,7 +19,8 @@ int main()
 
 	//자료형         구조체변수
 	struct EMPLOYEE emps = {"홍길동", 3500000, 145, "서울시 강남구 100"};
-	
+	struct EMPLOYEE* ptr; //구조체 포인터 변수
+
 	printf("%d, %d\n", sizeof(emps), sizeof(struct EMPLOYEE));
 	//자료형으로 선언되어 크기가 같음
 	
@@ -36,14 +37,6 @@ int main()
 	printf("emps: %p, %p\n", &emps, emps.name); //emps.name = 주소
 	//주소를 알려고 할때는 emps앞에 &을 붙임
 
-	/*printf("성명 ? ");
-	gets(emps.name);
-	printf("월급 ? ");
-	scanf("%d", &emps.salary);
-	printf("키 ? ");
-	scanf("%f%*c", &emps.height);
-	printf("회사주소 ? ");
-	gets(emps.comAddr);*/
 	//주소인지 아닌지를 빠르게 판달할 필요가 있음.
 
 	printf("%s, %d, %f, %s\n",
@@ -55,8 +48,14 @@ int main()
 
 	tmp = emps;
 
-	printf("%s, %d, %f, %s\n",
+	printf("%s, %d, %f, %s\n\n",
 		tmp.name, tmp.salary, tmp.height, tmp.comAddr);
 	//통합자료형 변수이므로 그대로 복사가 가능
+
+	printf("ptr sizeof: %d \n", sizeof(ptr));
+	ptr = &emps; //구조체에서 시작된 변수 삽입
+	printf("%s, %d, %.2f, %s \n", ptr->name, ptr->salary,
+		(*ptr).height, (*ptr).comAddr);
+	//-> : 구조체 포인터 연산자
 	return 0;
 }

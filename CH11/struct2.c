@@ -8,7 +8,7 @@ typedef struct EMPLOYEE { //태그 네임 : EMPLOYEE
 	char comAddr[100]; // 100
 }EMP;//함수안에 써놓은 구조체에는 함수안에서 밖에 못쓴다.
 
-void funcA(EMP emps);
+void funcA(EMP* emps);
 EMP funcB();
 
 int main()
@@ -16,17 +16,24 @@ int main()
 	
 	struct EMPLOYEE emps = { "홍길동", 3500000, 145, "서울시 강남구 100" }, my;
 
-	funcA(emps);
+	funcA(&emps);
+	printf("main() emps : %s, %d, %.2f, %s\n",
+		emps.name, emps.salary, emps.height, emps.comAddr);
+
 	my = funcB();
 	printf("My: %s, %d, %.2f, %s\n",
 		my.name, my.salary, my.height, my.comAddr);
 	return 0;
 }
 
-void funcA(EMP emps) //struct EMPLOYEE emps
+void funcA(EMP* emps) //struct EMPLOYEE emps
+//또다른 메모리가 할당 받음.
+//구조체 포인터 변수(4바이트 할당)
 {
 	printf("funcA: %s, %d, %.2f, %s\n",
-		emps.name, emps.salary, emps.height, emps.comAddr);
+		emps->name, emps->salary, emps->height, emps->comAddr);
+
+	emps->salary += 200000;
 }
 
 EMP funcB()
