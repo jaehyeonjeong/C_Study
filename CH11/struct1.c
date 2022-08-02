@@ -7,12 +7,13 @@
 int main()
 {
 	//사용자정의 자료형 선언
-	struct EMPLOYEE { //태그 네임 : EMPLOYEE
+	typedef struct EMPLOYEE { //태그 네임 : EMPLOYEE
 		char name[20]; //맴버(Member) // 20
 		int salary; // 4
 		float height; // 4
 		char comAddr[100]; // 100
-	}/*emps = { "홍길동", 3500000, 145, "서울시 강남구 100" }*/;
+	}/*emps = { "홍길동", 3500000, 145, "서울시 강남구 100" }*/
+	EMP; //재정의된 이름 호출(재정의된 자료형 명)
 	//구조체 맴버 변수를 바로 초기화
 	//맴버의 집합
 
@@ -35,19 +36,27 @@ int main()
 	printf("emps: %p, %p\n", &emps, emps.name); //emps.name = 주소
 	//주소를 알려고 할때는 emps앞에 &을 붙임
 
-	printf("성명 ? ");
+	/*printf("성명 ? ");
 	gets(emps.name);
 	printf("월급 ? ");
 	scanf("%d", &emps.salary);
 	printf("키 ? ");
 	scanf("%f%*c", &emps.height);
 	printf("회사주소 ? ");
-	gets(emps.comAddr);
+	gets(emps.comAddr);*/
 	//주소인지 아닌지를 빠르게 판달할 필요가 있음.
 
 	printf("%s, %d, %f, %s\n",
 		emps.name, emps.salary, emps.height, emps.comAddr);
 
 	printf("%d \n", emps.salary);
+
+	EMP tmp; //가독성이 떨어지는 대신 선언이 간단하다.
+
+	tmp = emps;
+
+	printf("%s, %d, %f, %s\n",
+		tmp.name, tmp.salary, tmp.height, tmp.comAddr);
+	//통합자료형 변수이므로 그대로 복사가 가능
 	return 0;
 }
