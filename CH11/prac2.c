@@ -21,11 +21,11 @@ int main()
 		for (j = 0; j < 9 - i; j++)
 		{
 			//문자배열 비교
-			if (strcmp(names[j], names[j + 1]) == -1)
+			if (strcmp(names[j], names[j + 1]) == 1)
 			{
-				*tmp = *(names[i]);
-				*(names[i]) = *(names[i + 1]);
-				*(names[i + 1]) = *tmp;
+				strcpy(tmp, names[j]);
+				strcpy(names[j], names[j + 1]);
+				strcpy(names[j + 1], tmp);
 			}
 		}
 	}
